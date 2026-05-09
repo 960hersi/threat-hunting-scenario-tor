@@ -101,59 +101,155 @@ DeviceNetworkEvents
 
 ### 1. File Download - TOR Installer
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+12:40:21 AM — Tor Browser Installer Renamed
+A file rename event was recorded for the Tor Browser installer:
+File: tor-browser-windows-x86_64-portable-15.0.11.exe
+Location: C:\Users\saeed\Downloads\
+This indicates the Tor Browser installer was present in the user's Downloads directory.
+12:40:26 AM — Tor Browser Installer Downloaded
+A file creation event confirmed the Tor Browser installer was downloaded to the endpoint.
+Details
+File: tor-browser-windows-x86_64-portable-15.0.11.exe
+Path: C:\Users\saeed\Downloads\
+SHA256:
+ 3ae94669801d4c1370066c2322eb3bd58a4e3cd063dab6670ea3eecf286145e7
+User: saeed
+This marks the initial confirmed Tor Browser download activity on the endpoint.
+
 
 ### 2. Process Execution - TOR Browser Installation
 
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+12:42:26 AM — Silent Installation of Tor Browser
+Process telemetry showed execution of the Tor Browser installer using silent installation arguments.
+Process Command Line
+tor-browser-windows-x86_64-portable-15.0.11.exe /S
+Observed Activity
+Device: saeedtest
+User: saeed
+Installation Type: Silent install (/S)
+This confirms Tor Browser was installed without interactive prompts.
+
 
 ### 3. Process Execution - TOR Browser Launch
 
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
+12:42:37 AM — Tor Browser Files Created
+Multiple Tor Browser-related files were created during installation.
+Files Observed
+tor.txt
+Torbutton.txt
+Tor-Launcher.txt
+Location
+C:\Users\saeed\Desktop\Tor Browser\Browser\TorBrowser\Docs\Licenses\
+These file creation events confirm deployment of the Tor Browser application directory.
 
-### 4. Network Connection - TOR Network
+12:42:38 AM — tor.exe Created
+The Tor executable was written to disk.
+Details
+File: tor.exe
+Location:
+ C:\Users\saeed\Desktop\Tor Browser\Browser\TorBrowser\Tor\
+SHA256:
+ a028d058c4d49cf0df10fe6069e4c8fe177d8996414550c6f10c1a97ee24a620
+This confirms the Tor network client component was successfully installed.
 
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+12:42:42 AM — Desktop Shortcut Created
+A desktop shortcut for Tor Browser was created.
+Details
+File: Tor Browser.lnk
+Location:
+ C:\Users\saeed\Desktop\Tor Browser\
+This indicates the installation completed successfully and the application became accessible to the user.
 
-### 5. Additional Network Connections - TOR Browser Activity
+12:42:48 AM — Initial Tor Browser Execution
+Process telemetry confirmed Tor Browser execution activity.
+Observed Processes
+tor.exe
+firefox.exe
+tor-browser.exe
+This marks the first observed launch of the Tor Browser application after installation.
 
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
+### 4. Additional - TOR Browser Activity
+
+12:42:49 AM — Browser Storage Database Created
+Tor Browser profile storage files were generated.
+File
+storage.sqlite
+Location
+C:\Users\saeed\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\
+This indicates the browser profile initialized successfully after execution.
+
+12:42:52 AM — Synchronization Database Created
+Additional Tor Browser profile artifacts were generated.
+File
+storage-sync-v2.sqlite
+Location
+C:\Users\saeed\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\
+This further confirms active use of the Tor Browser profile.
+
+### 5. Network Connection - TOR Network
+
+12:43:19 AM — Tor Network Connection Established
+Network telemetry confirmed outbound Tor-related communications.
+Details
+Device: saeedtest
+User: saeed
+Process: firefox.exe
+Process Path:
+ C:\Users\saeed\Desktop\Tor Browser\Browser\firefox.exe
+Action: ConnectionSuccess
+Remote Port: 9150
+Port 9150 is commonly associated with the Tor Browser SOCKS proxy service.
+Additional observed Tor-related network ports included:
+443
+51078
+This confirms successful network activity originating from the Tor Browser environment.
+
+
+
+
 
 ### 6. File Creation - TOR Shopping List
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+12:45:40 AM — Tor Shopping List File Created
+User activity indicated creation and access of a Tor-related text document.
+Observed Files
+tor-shopping-list.txt
+tor-shopping-list.lnk
+Locations
+C:\Users\saeed\Desktop\
+C:\Users\saeed\AppData\Roaming\Microsoft\Windows\Recent\
+The .lnk artifact indicates the file was opened or accessed by the user.
+
+12:46:01 AM — Tor Shopping List Modified
+The previously created text file was modified.
+Details
+File: tor-shopping-list.txt
+Location:
+ C:\Users\saeed\Desktop\
+SHA256:
+ a03ad8475603e992b6855b216d2c65e876e81bada093578e2ceb0e4d640e733f
+This indicates continued user interaction with the file after Tor Browser installation and execution.
+
 
 ---
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+The investigation confirmed the following sequence of Tor-related activity on device saeedtest by user saeed:
+Tor Browser installer was downloaded to the endpoint.
+Tor Browser was silently installed using /S installation arguments.
+Tor Browser application files and executables were deployed.
+The user launched Tor Browser shortly after installation.
+Tor Browser initialized browser profile and storage artifacts.
+Successful Tor-related network communications were observed, including traffic over port 9150.
+The user created and modified a file named tor-shopping-list.txt following Tor Browser usage.
+The telemetry collectively confirms download, installation, execution, and active usage of the Tor Browser environment on the investigated endpoint.
+
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+TOR usage was confirmed on the endpoint “saeedtest”. The device was isolated and the user's “saeed” direct manager was notified.
 
 ---
